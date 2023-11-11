@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(196, 196, 255);
+        }
+
+        main {
+            background-color: rgb(33, 35, 173);
+            box-shadow: 2px 2px 10px blue;
+            border-radius: 20px;
+            margin-top: 30px;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heding {
+            font-weight: bold;
+            font-size: 25px;
+            margin: 10px;
+        }
+
+        .photo {
+            min-height: 30rem;
+            min-width: 40rem;
+            /* height: 4rem; */
+            width: 40rem;
+            max-height: 50rem;
+            max-width: 50rem;
+            padding: 20px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .reset {
+            padding: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 class="heding">
+            RANDOM QUOTE GENERATOR
+        </h1>
+        <div class="photo">
+
+        </div>
+        <a class="reset" onclick="Quote()" href="#">new</a>
+    </main>
+
+    <script>
+
+        function Quote() {
+
+            a = fetch("https://api.quotable.io/quotes/random")
+            a.then((result) => {
+                return result.json()
+            }).then((value) => {
+                document.querySelector(".photo").innerHTML = value[0].content
+            })
+        }
+        Quote()
+    </script>
+</body>
+
+</html>
